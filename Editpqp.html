@@ -1,0 +1,40 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+
+<body>
+{% extends 'Mentor/Mentorhome.html'%}
+{% block body %}
+<form id="form1" name="form1" method="post" action="/myapp/Editpqp_post/" enctype="multipart/form-data">
+{% csrf_token%}
+    <h1>EDIT PREVIOUS QP</h1>
+    <input type="hidden" name="id" value="{{ data.id }}"/>
+  <table  class="table table-bordered">
+    <tr>
+      <th>Name</th>
+      <td><label for="textfield"></label>
+      <input type="text" value="{{ data.title }}" name="textfield" id="textfield" /></td>
+    </tr>
+    <tr>
+      <th>Year</th>
+      <td><label for="textfield2"></label>
+      <input type="text" value="{{ data.year }}" name="textfield2" id="textfield2" /></td>
+    </tr>
+    <tr>
+      <th>Code</th>
+      <td><label for="textfield3"></label>
+      <input type="text" value="{{ data.code }}" name="textfield3" id="textfield3" /></td>
+    </tr>
+    <tr>
+      <th><label for="fileField"></label>
+      <input type="file"  value="{{ data.qp }}" name="fileField" id="fileField" /></th>
+      <td><input type="submit" name="button" id="button" value="EDIT" /></td>
+    </tr>
+  </table>
+</form>
+{% endblock %}
+</body>
+</html>

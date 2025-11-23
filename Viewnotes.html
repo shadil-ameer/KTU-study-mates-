@@ -1,0 +1,34 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+
+<body>
+{% extends 'Mentor/Mentorhome.html'%}
+{% block body %}
+<form id="form1" name="form1" method="post" action="">
+<h1>NOTES</h1>
+ <table class="table table-bordered">
+    <tr>
+      <th>Name</th>
+      <th>Code</th>
+      <th>Year</th>
+      <th>File</th>
+      <th></th>
+    </tr>
+     {% for i in data %}
+    <tr>
+      <td>{{ i.title }}</td>
+      <td>{{ i.code }}</td>
+      <td>{{ i.year }}</td>
+      <td><a href="{{ i.note }}" download>Download</a></td>
+       <td><p><a href="/myapp/Editnotes/{{ i.id }}">EDIT</a></p>
+      <p><a href="/myapp/notesdelete/{{ i.id }}">DELETE</a></p></td>
+    </tr>{% endfor %}
+  </table>
+</form>
+{% endblock %}
+</body>
+</html>

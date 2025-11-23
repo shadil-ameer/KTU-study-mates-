@@ -1,0 +1,43 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+
+<body>
+{% extends 'Admin/adminhome.html'%}
+{% block body %}
+<body><form action="/myapp/viewreview_post/" method="post">
+    {% csrf_token %}
+    <table border="1px">
+        <tr>
+            <td><label>FROM DATE:</label></td>
+            <td><input type="date" name="fromdate"/></td>
+            <td><label>TO DATE:</label></td>
+            <td><input type="date" name="todate"/></td>
+            <td><input type="submit" value="Search"/></td>
+        </tr>
+    </table>
+
+    <table width="398" border="1">
+  <tr>
+    <td width="39">SNO</td>
+    <td width="49">DATE</td>
+    <td width="88">STUDENT</td>
+    <td width="68">MENTOR</td>
+    <td width="120">REVIEW</td>
+  </tr>{% for i in data %}
+  <tr>
+    <td>{{ forloop.counter }}</td>
+    <td>{{ i.date }}</td>
+    <td>{{ i.STUDENT.name }}</td>
+    <td>{{ i.MENTOR.name }}</td>
+    <td>{{ i.review }}</td>
+  </tr>
+        {% endfor %}
+</table>
+</form>
+</body>
+{#</html>#}
+{% endblock %}

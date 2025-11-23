@@ -1,0 +1,36 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+
+<body>
+{% extends 'Mentor/Mentorhome.html'%}
+{% block body %}
+<form id="form1" name="form1" method="post" action="">
+  {% csrf_token %}
+<h1>PREVIOUS QP</h1>
+    <table class="table table-bordered">
+    <tr>
+      <th>Name</th>
+      <th>Code</th>
+      <th>Year</th>
+      <th>File</th>
+      <th></th>
+    </tr>
+   {% for i in data %}
+    <tr>
+      <td>{{ i.title }}</td>
+      <td>{{ i.year }}</td>
+      <td>{{ i.code }}</td>
+      <td><a href="{{ i.qp }}" download>Download</a></td>
+
+       <td><p><a href="/myapp/Editpqp/{{ i.id }}">EDIT</a></p>
+      <p><a href="/myapp/pqpdelete/{{ i.id }}">DELETE</a></p></td>
+    </tr> {% endfor %}
+  </table>\
+</form>
+{% endblock %}
+</body>
+</html>

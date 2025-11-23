@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/doubtview_post/">
+    {% csrf_token %}
+    <table border="1px">
+        <tr>
+            <td><label>FROM DATE:</label></td>
+            <td><input type="date" name="fromdate"/></td>
+            <td><label>TO DATE:</label></td>
+            <td><input type="date" name="todate"/></td>
+            <td><input type="submit" value="Search"/></td>
+        </tr>
+    </table>
+  <table width="823" border="1">
+    <tr>
+      <td width="79">SNO</td>
+      <td width="98">DATE</td>
+      <td width="218">DOUBT</td>
+      <td width="98">STUDENT</td>
+      <td width="131">REPLY</td>
+    </tr>
+       {% for i in data %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>{{ i.date }}</td>
+      <td>{{ i.doubt }}</td>
+      <td>{{ i.STUDENT.name }}</td>
+      <td>{% if i.reply == "pending" %}<a href="/myapp/doubtreply/{{ i.id }}">REPLY</a>{% else %}{{ i.reply }}{% endif %}</td>
+    </tr>
+      {% endfor %}
+  </table>
+</body>
+</html>
